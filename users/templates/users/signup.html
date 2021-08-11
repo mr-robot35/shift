@@ -1,0 +1,27 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}SIGN UP{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'users/css/user_signup.css' %}">
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% block h1 %}
+<h1>SIGN UP</h1>
+{% endblock %}
+
+{% block content %}
+<div class="signup">
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">SIGN UP</button>
+  </form>
+  <p>or</p>
+  <a href="{% url 'password_reset' %}">Forgot Password</a>
+</div>
+{% endblock %}

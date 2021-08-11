@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none!important;
+    color: black!important;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    margin-bottom : 1em;
+}
+.h-left ul{
+    margin: 0;
+    display: flex;
+}
+.h-left li{
+    padding: 0 1em;
+}
+
+.wrap {
+    width: 90%;
+    margin: 0 auto;
+}
+
