@@ -1,0 +1,56 @@
+{% extends 'shift/base.html' %}
+{% load static %}
+{% block title %}SUBMIT{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'apply/css/calendar.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% endblock %}
+
+{% block js %}
+<script>
+    var variables = {
+        schedule: JSON.parse('{{ date }}'.replace(/&quot;/g,'"')),
+    }
+</script>
+<link rel='stylesheet' href="{% static 'apply/fullcalendar/main.css' %}">
+<link rel="stylesheet" href="{% static 'apply/css/calendar_submit.css' %}">
+<script type="text/javascript" src="{% static 'apply/fullcalendar/main.js' %}"></script>
+<script type="text/javascript" src="{% static 'apply/js/calendar.js' %}"></script>
+{% endblock %}
+
+{% block h1 %}
+<h1>SUBMIT</h1>
+{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+  <div class="top">
+    <button type="submit" class="submit btn btn-primary btn-lg btn-block">SUBMIT</button>
+    <ul>
+      <li>
+        <div class="fc-daygrid-event-dot dot-green"></div>
+        <p>Checking...</p>
+      </li>
+      <li>
+        <div class="fc-daygrid-event-dot dot-red"></div>
+        <p>Confirmed</p>
+      </li>
+    </ul>
+  </div>
+  <div id='calendar'></div>
+  <div id="forms">
+    {% for form in formset %}
+      <div class="form" >
+        <div class="modal-inner">
+          {{ form.as_p }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  {{ formset.management_form }}
+  <input type="hidden" name="posts" value="{{ posts }}">
+  {% csrf_token %}
+</form>
+{% endblock %}
+

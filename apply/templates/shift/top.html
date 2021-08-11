@@ -1,0 +1,43 @@
+{% extends 'shift/base.html' %}
+{% load static %}
+{% block title %}SHIFT TOP{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'apply/css/calendar_top.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% endblock %}
+
+{% block js %}
+<script>
+  var variables = {
+    schedule: JSON.parse('{{ date }}'.replace(/&quot;/g,'"')),
+  }
+</script>
+<link rel='stylesheet' href="{% static 'apply/fullcalendar/main.css' %}">
+<script type="text/javascript" src="{% static 'apply/fullcalendar/main.js' %}"></script>
+<script type="text/javascript" src="{% static 'apply/js/calendar_top.js' %}"></script>
+{% endblock %}
+
+{% block extra %}
+{% endblock %}
+
+{% block h1 %}
+<h1>SHIFT TOP</h1>
+{% endblock %}
+
+{% block content %}
+<div class="top top-only">
+  <ul>
+    <li>
+      <div class="fc-daygrid-event-dot dot-green"></div>
+      <p>Checking...</p>
+    </li>
+    <li>
+      <div class="fc-daygrid-event-dot dot-red"></div>
+      <p>Confirmed</p>
+    </li>
+  </ul>
+</div>
+<div id='calendar'></div>
+{% endblock %}
+
