@@ -1,0 +1,49 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block title %}SHOP{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'shop/css/shop_top.css' %}">
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% block h1 %}
+<h1>SHOP</h1>
+{% endblock %}
+
+{% block content %}
+<h2>SHOP INFORMATION</h2>
+<table class="shop table table-striped">
+  <tr>
+    <th>NAME</th>
+    <td>{{ shop.name }}</td>
+  </tr>
+  <tr>
+    <th>EMAIL</th>
+    <td>{{ shop.email }}</td>
+  </tr>
+  <tr>
+    <th>TEL</th>
+    <td>{{ shop.tel }}</td>
+  </tr>
+</table>
+<h2>STAFFS</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>NAME</th>
+      <th>EMAIL</th>
+    </tr>
+  </thead>
+  {% for staff in staffs %}
+    <tr>
+      <td>{{ staff.name }}</td>
+      <td>{{ staff.email }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}
