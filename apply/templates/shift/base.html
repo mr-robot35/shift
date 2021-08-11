@@ -1,0 +1,49 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'apply/css/calendar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    {% block css %}{% endblock %}
+    {% block js %}{% endblock %}
+</head>
+  <body>
+    <header>
+      <div class="h-right">
+        <p>{% block h1 %}{% endblock %}</p>
+      </div>
+      <div class="h-left">
+        <nav>
+          <ul>
+            <li>
+              <a href="{% url 'account_top' %}">ACCOUNT TOP</a>
+            </li>
+            <li>
+              <a href="{% url 'top' %}">SHOP TOP</a>
+            </li>
+            <li>
+              <a href="{% url 'apply:shift_top' %}">SHIFT TOP</a>
+            </li>
+            <li>
+              <a href="{% url 'apply:submit' %}">SUBMISSION</a>
+            </li>
+            {% if user.is_owner %}
+            <li>
+              <a href="{% url 'apply:confirm' %}">CONFIRMATION</a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="wrap">
+      {% block content %}{% endblock %}
+    </div>
+    {% block extra %}{% endblock %}
+  </body>
+</html>
