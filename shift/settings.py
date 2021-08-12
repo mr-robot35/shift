@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-61p0c5@k&a-dai2wyrs-q%ccsy58m^ggdpta875!&457i)=cuj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -86,6 +86,8 @@ DATABASES = {
         'NAME': 'jango',
         'USER': 'jango',
         'PASSWORD': 'jangojango',
+        # Docker => 'db
+        # else => '127.0.0.1'
         'HOST': '127.0.0.1',
     }
 }

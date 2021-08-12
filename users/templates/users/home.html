@@ -1,0 +1,25 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}HOME{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'users/css/user_home.css' %}">
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% block h1 %}
+<h1>HOME</h1>
+{% endblock %}
+
+{% block content %}
+{% if auth %}
+<h2>WELCOME BACK, {{ user.name }}.</h2>
+{% else %}
+<h2>Thank you for seeing our site.</h2>
+<p>Please click <a href="{% url 'signup' %}">HERE</a> to create new account.</p>
+<p>If you already have account, <a href="{% url 'login' %}">LOG IN</a> here</p>
+{% endif %}
+{% endblock %}

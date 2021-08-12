@@ -1,5 +1,6 @@
 # Django Shift Management Project
-This is shift management project.
+This is a shift management project.
+I build this on Docker, so if you have installed Docker & docker-compose, you can easliy build.
 
 ![confirm](https://user-images.githubusercontent.com/72122101/129039696-06f691f1-c2b7-47a0-8fb6-be46257b42f3.png)
 
@@ -7,6 +8,8 @@ This is shift management project.
 
 |  | Version |
 | ------ | ------ |
+| Docker | 20.10.7 |
+| docker-compose | 1.27.4 |
 | Python | 3.9.6 |
 | Django | 3.2.5 |
 | MySQL | 8.0.26-0 |
@@ -16,11 +19,13 @@ This is shift management project.
 ## Tech
 
 - Django
--- Server-side framework.
+ Server-side framework.
+- Docker, docker-compose
+ Container
 - Bootstrap
--- UI desigin. I'm not good at desiging...
+ UI desigin. I'm not good at desiging...
 - MySQL
--- Data base. This is for a large data insted of sqlList.
+ Data base. This is for a large data insted of sqlList.
 
 ## Installation
 
@@ -28,18 +33,19 @@ This is shift management project.
 ```sh
 git clone git@github.com:nakanoi/shift.git
 ```
-2. install packages
+2. build on docker
 ```sh
-pip install django django-filter django-framework mysqlclient 
+docker-compose up --build -d
 ```
 -**Below process is exactly same as usually django project.**
 3. Migrate
 ```python
-python manage.py migrate
+docker-compose run web python3 manage.py makemigrations
+docker-compose run web python3 manage.py migrate
 ```
 4. Run sercer
 ```python
-python manage.py runserver
+docker-compose run web python3 manage.py runserver
 ```
 
 ## Usage
