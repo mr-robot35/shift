@@ -17,38 +17,40 @@
       <div class="h-right">
         <p>{% block h1 %}{% endblock %}</p>
       </div>
-      <div class="h-left">
-        <nav>
-          <ul>
-            <li>
-              <a href="{% url 'account_top' %}">ACCOUNT TOP</a>
-            </li>
-            {% if user.shop is None %}
+      {% if auth %}
+        <div class="h-left">
+          <nav>
+            <ul>
               <li>
-                <a href="{% url 'create' %}">CREATE SHOP</a>
+                <a href="{% url 'account_top' %}">ACCOUNT TOP</a>
               </li>
+              {% if user.shop is None %}
+                <li>
+                  <a href="{% url 'create' %}">CREATE SHOP</a>
+                </li>
+                <li>
+                  <a href="{% url 'join' %}">JOIN SHOP</a>
+                </li>
+              {% else %}
               <li>
-                <a href="{% url 'join' %}">JOIN SHOP</a>
+                <a href="{% url 'top' %}">SHOP TOP</a>
               </li>
-            {% else %}
-            <li>
-              <a href="{% url 'top' %}">SHOP TOP</a>
-            </li>
-              <li>
-                <a href="{% url 'apply:shift_top' %}">SHIFT TOP</a>
-              </li>
-              <li>
-                <a href="{% url 'apply:submit' %}">SUBMISSION</a>
-              </li>
-              {% if user.is_owner %}
-              <li>
-                <a href="{% url 'apply:confirm' %}">CONFIRMATION</a>
-              </li>
+                <li>
+                  <a href="{% url 'apply:shift_top' %}">SHIFT TOP</a>
+                </li>
+                <li>
+                  <a href="{% url 'apply:submit' %}">SUBMISSION</a>
+                </li>
+                {% if user.is_owner %}
+                <li>
+                  <a href="{% url 'apply:confirm' %}">CONFIRMATION</a>
+                </li>
+                {% endif %}
               {% endif %}
-            {% endif %}
-          </ul>
-        </nav>
-      </div>
+            </ul>
+          </nav>
+        </div>
+      {% endif %}
     </header>
     <div class="wrap">
       {% block content %}{% endblock %}
