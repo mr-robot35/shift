@@ -20,7 +20,7 @@ I build this on Docker, so if you have installed Docker & docker-compose, you ca
 
 - Django
  Server-side framework.
-- Docker, docker-compose
+- Docker docker-compose
  Container
 - Bootstrap
  UI desigin. I'm not good at desiging...
